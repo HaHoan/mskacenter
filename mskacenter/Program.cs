@@ -32,5 +32,5 @@ app.MapControllerRoute(
     pattern: "{controller=Login}/{action=Index}/{id?}")
     .WithStaticAssets();
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-
+app.MapGet("/", () => "OK RENDER");
 app.Run($"http://0.0.0.0:{port}");
