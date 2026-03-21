@@ -2,7 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using mskacenter.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
+// Bắt tất cả IP, port 80
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(80);
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MskaManagementContext>(options =>
