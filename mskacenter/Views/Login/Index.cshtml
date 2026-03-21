@@ -1,0 +1,60 @@
+﻿@using mskacenter.ViewModels
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập - Trung tâm ngoại ngữ MS Kim Anh</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="height:100vh; background: linear-gradient(135deg, #4facfe, #00f2fe);">
+
+    <div class="d-flex justify-content-center align-items-center h-100">
+
+        <div class="login-box text-center" style="width:380px;background:#fff;padding:35px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.2);">
+
+            <img src="~/images/logo.png" style="width:80px;height:80px;object-fit:contain;margin-bottom:10px;" />
+
+            <h4 class="mb-4">
+                Trung tâm ngoại ngữ<br />
+                MS Kim Anh
+            </h4>
+
+            <!-- FORM RAZOR -->
+            <form asp-action="Login" method="post">
+
+                <div class="mb-3 text-start">
+                    <label class="form-label">Tài khoản</label>
+                    <input asp-for="Username" class="form-control" placeholder="Nhập tài khoản" />
+                </div>
+
+                <div class="mb-3 text-start">
+                    <label class="form-label">Mật khẩu</label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Nhập mật khẩu" />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">
+                    Đăng nhập
+                </button>
+
+            </form>
+
+            <!-- Hiển thị lỗi -->
+            @if (ViewBag.Error != null)
+            {
+                <div class="text-danger mt-3">@ViewBag.Error</div>
+            }
+
+        </div>
+
+    </div>
+
+</body>
+</html>
