@@ -1,4 +1,4 @@
-# Stage 1: Build stage
+# Stage 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
@@ -9,17 +9,17 @@ RUN dotnet restore
 # Copy toàn bộ source code
 COPY . ./
 
-# Build và publish ra thư mục /app
+# Build release và publish ra /app
 RUN dotnet publish -c Release -o /app
 
-# Stage 2: Runtime stage
+# Stage 2: Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 # Copy từ build stage sang runtime
 COPY --from=build /app .
 
-# Expose port 80 để Render route HTTP
+# Expose port 80
 EXPOSE 80
 
 # Chạy ứng dụng
