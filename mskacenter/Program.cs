@@ -29,12 +29,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
+app.UseStaticFiles();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Login}/{action=Index}/{id?}")
-    .WithStaticAssets();
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 app.MapGet("/", () => "OK RENDER");
 app.Run($"http://0.0.0.0:{port}");
