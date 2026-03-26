@@ -2,11 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using mskacenter.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-// Bắt tất cả IP, port 80
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.ListenAnyIP(80);
-});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MskaManagementContext>(options =>
@@ -21,9 +17,9 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
+    app.UseHttpsRedirection();
 }
 
-app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthorization();
